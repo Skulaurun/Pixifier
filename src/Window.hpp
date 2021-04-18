@@ -15,6 +15,8 @@
 
 #include <string>
 
+class Mouse;
+
 class Window {
 
 private:
@@ -65,6 +67,7 @@ public:
 	void setBackgroundColor(const Color& color);
 	void setFramerateLimit(const unsigned int limit);
 
+	operator HWND() const;
 	std::wstring getTitle() const;
 	IVec2 getPosition() const;
 	IVec2 getSize() const;

@@ -95,4 +95,7 @@ bool operator<=(const Vector2D<T1>& left, const Vector2D<T2>& right) {
 }
 
 typedef Vector2D<int> IVec2;
+typedef Vector2D<unsigned int> UIVec2;
+
 typedef Vector2D<float> FVec2;
+typedef Vector2D<double> DVec2;

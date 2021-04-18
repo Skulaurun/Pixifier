@@ -1,4 +1,5 @@
 #include "Mouse.hpp"
+#include "Window.hpp"
 
 #include <windows.h>
 
@@ -29,6 +30,16 @@ unsigned int Mouse::convertButtonToCode(const Button button) {
 
 	return code;
 
+}
+IVec2 Mouse::getCursorPosition(const Window* window) {
+	POINT point;
+	if (GetCursorPos(&point)) {
+		if (window != nullptr) {
+			ScreenToClient((HWND)*window, &point);
+		}
+		return IVec2(point.x, point.y);
+	}
+	return IVec2(-1);
 }
 bool Mouse::isButtonPressed(const Button button) {
 	return (GetAsyncKeyState(Mouse::convertButtonToCode(button)) & 0x8000) != 0;

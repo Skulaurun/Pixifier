@@ -262,6 +262,9 @@ void Window::setBackgroundColor(const Color& color) {
 void Window::setFramerateLimit(const unsigned int limit) {
 	this->framerateLimit = limit;
 }
+Window::operator HWND() const {
+	return hWindow;
+}
 std::wstring Window::getTitle() const {
 	std::wstring title;
 	int size = GetWindowTextLength(hWindow) + 1;

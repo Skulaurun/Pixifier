@@ -21,3 +21,13 @@ void DeviceContext::fillEllipse(const IVec2& position, const IVec2& size, const 
 	DeleteObject(hNewPen);
 
 }
+void DeviceContext::drawText(const std::wstring& content, const IVec2& position, const IVec2& size, const Color& fillColor) {
+
+	HFONT hNewFont = (HFONT)GetStockObject(SYSTEM_FONT), hOldFont = (HFONT)SelectObject(hDC, hNewFont);
+	SetBkColor(hDC, TRANSPARENT);
+	SetTextColor(hDC, BGR(fillColor));
+	RECT r = { position.x, position.y, size.x, size.y };
+	DrawTextW(hDC, content.c_str(), content.size(), &r, DT_CENTER);
+	SelectObject(hDC, hOldFont);
+
+}
